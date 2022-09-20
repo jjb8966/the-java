@@ -202,15 +202,31 @@ public class FunctionalInterfaceAndLambdaTest {
 
     @Test
     void 생성자_참조() {
+//        Supplier<TestClass> basicConstructor = new Supplier<TestClass>() {
+//            @Override
+//            public TestClass get() {
+//                return new TestClass();
+//            }
+//        };
+
 //        Supplier<TestClass> basicConstructor = () -> new TestClass();
+
         Supplier<TestClass> basicConstructor = TestClass::new;
 
+//        Function<Integer, TestClass> paramConstructor = new Function<Integer, TestClass>() {
+//            @Override
+//            public TestClass apply(Integer param) {
+//                return new TestClass(param);
+//            }
+//        };
+
 //        Function<Integer, TestClass> paramConstructor = (param) -> new TestClass(param);
+
         Function<Integer, TestClass> paramConstructor = TestClass::new;
 
         // basicConstructor와 paramConstructor의 생성자는 서로 다름!
 
-        basicConstructor.get();
-        paramConstructor.apply(1);
+        TestClass obj1 = basicConstructor.get();
+        TestClass obj2 = paramConstructor.apply(1);
     }
 }
